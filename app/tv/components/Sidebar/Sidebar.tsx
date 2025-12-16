@@ -68,28 +68,7 @@ export default function Sidebar({
 
   return (
     <aside className={`sidebar ${isMobileOpen ? 'open' : ''}`}>
-      <div className="search-section">
-        <div className="search-title">Buscar Canal</div>
-        <input
-          type="text"
-          placeholder="Escribe el nombre del canal..."
-          className="search-input"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
-
       <div className="country-list">
-        <div className="category-item all-channels">
-          <div
-            className="category-header"
-            onClick={() => setSelectedGenre(null)}
-          >
-            <span className="category-name">Todos los canales</span>
-            <span className="category-count">{channels.length}</span>
-          </div>
-        </div>
-
         {genres.map((genre) => {
           const genreChannels = channels.filter((c) => c.genre === genre)
           const isExpanded = expandedCategories.has(genre)
