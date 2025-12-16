@@ -1,0 +1,109 @@
+/* components/Footer/footer.css */
+
+/* Main footer container */
+.footer-main {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 10px 13px 10px; /* Reserve space for scrollbar (3px + 10px) */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  background-color: white;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar hidden by default, appears only on hover */
+.footer-main::-webkit-scrollbar {
+  height: 3px; /* Always 3px height but invisible */
+  opacity: 0; /* Hidden by opacity */
+  transition: opacity 0.3s ease;
+}
+
+.footer-main:hover::-webkit-scrollbar {
+  opacity: 1; /* Appears on hover */
+}
+
+.footer-main::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 1.5px;
+  margin: 0 10px;
+}
+
+.footer-main::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #00d9ff, #00ff88);
+  border-radius: 1.5px;
+  transition: all 0.3s ease;
+}
+
+.footer-main::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #00b8d9, #00cc77);
+}
+
+/* Firefox scrollbar */
+.footer-main {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent; /* Hidden by default */
+}
+
+.footer-main:hover {
+  scrollbar-color: #00d9ff rgba(0, 0, 0, 0.03); /* Appears on hover */
+}
+
+/* Country buttons */
+.footer-country-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 14px;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0.6;
+  transform: scale(1);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Flag styling */
+.footer-country-flag {
+  width: 2em !important;
+  height: 2em !important;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: block !important;
+}
+
+/* Hover effect on buttons */
+.footer-country-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+/* Selected country */
+.footer-country-btn.selected {
+  opacity: 1;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  .footer-main {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+  }
+  
+  .footer-main::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}

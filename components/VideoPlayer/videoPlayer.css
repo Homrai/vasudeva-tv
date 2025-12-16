@@ -1,0 +1,16 @@
+.i-frame-main {
+  position: fixed;
+  left: 0;
+  top: 70px;
+  left: 300px;
+  width: 100%;
+  height: calc(100vh - 70px);
+  z-index: 900;
+}
+
+@media (max-width: 768px) {
+  .i-frame-main {
+    left: 0px;
+    z-index: 0;
+  }
+}

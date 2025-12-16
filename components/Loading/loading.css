@@ -1,0 +1,156 @@
+/* components/Loading/Loading.css */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Tamaños */
+.loading-small {
+  min-height: 150px;
+}
+
+.loading-medium {
+  min-height: 300px;
+}
+
+.loading-large {
+  min-height: 500px;
+}
+
+/* Spinner principal */
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  animation: spin-ring 1.5s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.spinner-ring::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+      transparent,
+      #00d9ff,
+      #00ff88,
+      transparent);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 0);
+  animation: spin-ring 2s linear infinite;
+}
+
+.spinner-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #00d9ff, #00ff88);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
+  animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+/* Mensaje */
+.loading-message {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 300px;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border-left: 3px solid #00d9ff;
+}
+
+/* Fondo animado */
+.loading-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center,
+      rgba(0, 217, 255, 0.05) 0%,
+      transparent 70%);
+  z-index: -1;
+  animation: background-pulse 3s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes spin-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes background-pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loading-spinner {
+    width: 60px;
+    height: 60px;
+  }
+
+  .spinner-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .loading-message {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
